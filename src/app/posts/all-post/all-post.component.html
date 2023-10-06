@@ -1,0 +1,81 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card shadow-effect bg-secondary-theme">
+                <div class="card-body text-center">
+                    <h3 class="text-theme-center">all blog</h3>
+                    <p>from here can manage ur blogs</p>
+
+                    <button class="btn btn-info bg-theme" [routerLink]="'/posts/new'">add new post</button>
+                    <button class="btn btn-warning m-sm-2" [routerLink]="'/'">back to dashboard</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card shadow-effect">
+                <div class="card-body">
+                    <table class="table row-border table-hover ">
+                        <thead class="">
+                            <th>
+                                no
+                            </th>
+                            <th>
+                                post imge
+                            </th>
+                            <th>
+                                title
+                            </th>
+                            <!-- <th>
+                                excerpt
+                            </th> -->
+                            <th>
+                                category
+                            </th>
+                            <th>
+                                date
+                            </th>
+                            <th>
+                                actions
+                            </th>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let post of postsData;let i =index">
+                                <td [width]="'10'">{{i + 1}}</td>
+                                <td [width]="'200'"><img [src]="post.data.postImgPath" alt=""
+                                        [style]="'max-height:180px;max-width:180px'"></td>
+                                <td [width]="'200'">{{post.data.title}}</td>
+                                <!-- <td [width]="'300'">{{post.data.excerpt}}</td> -->
+                                <td>{{post.data.category.category}}</td>
+                                <td>{{post.data.createAt.toMillis()|date}}</td>
+                                <td class="">
+                                    <button class="btn btn-sm btn-outline-warning " [routerLink]="'/posts/new'"
+                                        [queryParams]="{id:post.id}">
+                                        <i class="far fa-edit"></i>
+                                    </button>
+                                    <button class="btn btn-sm  btn-outline-danger  m-sm-2"
+                                        (click)="onDelete(post.id,post.data.postImgPath)"><i
+                                            class="fas fa-trash"></i></button>
+
+
+                                    <button *ngIf="!post.data.isFeatured" (click)="onFeatured(post.id,true)"
+                                        class="btn btn-sm  btn-outline-success m-sm-1"> mark featured</button>
+                                    <button *ngIf="post.data.isFeatured" (click)="onFeatured(post.id,false)"
+                                        class="btn btn-sm  btn-outline-info m-sm-1">remove featured</button>
+                                </td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>

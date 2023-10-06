@@ -1,0 +1,9 @@
+<header class="navbar navbar-expand-lg fixed-top bg-white ">
+    <div class="container justify-content-center ">
+        <a class="site-logo" href="#">blog</a>
+    </div>
+    <div class="container justify-content-center" *ngIf="isLogedIn$|async">
+        <a class="site-logo" href="#">{{email}}</a>
+        <button class="btn btn-info btn-sm bg-secendry-theme" (click)="onLogout()">logout</button>
+    </div>
+</header>

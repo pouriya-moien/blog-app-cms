@@ -1,0 +1,61 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 bg-secendry-theme p-5 shadow-effect">
+            <h3 class="text-center text-theme-primary">{{formStatus}} categories</h3>
+            <p class="text-center  mb-5 ">add new here</p>
+            <form action="" class="form-inline text-center" (submit)="submitHandler()" #categoryForm='ngForm'>
+                <div class="form-group col-md-10">
+                    <input name="categoryFormValue" [(ngModel)]="categoryFormValue" #caregoryForm='ngModel' type="text"
+                        class="form-control shadow-effect input-form" required placeholder="add new categorie" ngModel
+                        [ngClass]="{'is-invalid':caregoryForm.touched && caregoryForm.invalid}">
+                    <div class="alert alert-danger w-100 " *ngIf="caregoryForm.touched && caregoryForm.invalid">
+                        fill require</div>
+                </div>
+                <div class="col-md-2">
+                    <button class="btn btn-info btn-block mb-2 btn-sub" [disabled]="categoryForm.invalid">
+                        {{formStatus}}
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row mt-5 mb-5">
+        <div class="col-md-3">
+
+        </div>
+        <div class="col-md-6">
+            <div class="card shadow-effect">
+                <div class="card-body">
+                    <table class="table row-border table-hover">
+                        <thead class="">
+                            <th>
+                                no
+                            </th>
+                            <th>
+                                category
+                            </th>
+                            <th>
+                                action
+                            </th>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let categorys of categoriesData,let i = index">
+                                <td>{{i + 1}}</td>
+                                <td>{{categorys.data.category}}</td>
+                                <td>
+                                    <button class="btn btn-sm btn-warning"
+                                        (click)="onEditHandler(categorys.data.category,categorys.id)">edit</button>
+                                    <button class="btn btn-danger btn-sm m-sm-1"
+                                        (click)="onDeleteHandler(categorys.id)">delet</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+
+        </div>
+    </div>
+</div>

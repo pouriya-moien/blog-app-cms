@@ -1,0 +1,58 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card shadow-effect bg-secondary-theme">
+                <div class="card-body text-center">
+                    <h3 class="text-theme-center">all users</h3>
+                    <p>from here can usersmanage ur blogs</p>
+
+                    <button class="btn btn-warning m-sm-2" [routerLink]="'/'">back to dashboard</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card shadow-effect">
+                <div class="card-body">
+                    <table class="table row-border table-hover ">
+                        <thead class="">
+                            <th>
+                                no
+                            </th>
+                            <th>
+                                name
+                            </th>
+                            <th>
+                                eamil
+                            </th>
+                            <th>
+                                actions
+                            </th>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let sub of subs;let i = index">
+                                <td [width]="'10'">{{i + 1}}</td>
+
+                                <!-- <td [width]="'300'">{{post.data.excerpt}}</td> -->
+                                <td>{{sub.data.name}}</td>
+                                <td>{{sub.data.email}}</td>
+                                <td class="">
+                                    <button class="btn btn-sm  btn-outline-danger  m-sm-2" (click)="onDelete(sub.id)"><i
+                                            class="fas fa-trash"></i></button>
+                                </td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
